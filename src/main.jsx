@@ -1,10 +1,30 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode, useEffect } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, useNavigate } from "react-router";
+import "./index.css";
+import App from "./App.jsx";
 
-createRoot(document.getElementById('root')).render(
+function RedirectHandler({ children }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const redirectPath = sessionStorage.getItem("redirectPath");
+    if (redirectPath) {
+      sessionStorage.removeItem("redirectPath");
+      // Remove the basename from the stored path before navigating
+      navigate(redirectPath.replace("/college-directory", ""));
+    }
+  }, [navigate]);
+
+  return children;
+}
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <BrowserRouter basename="/college-directory">
+      <RedirectHandler>
+        <App />
+      </RedirectHandler>
+    </BrowserRouter>
+  </StrictMode>
+);
