@@ -6,6 +6,7 @@ import EditCampus from "./pages/campuses/EditCampus";
 import AllStudents from "./pages/campuses/AllCampuses";
 import SingleStudent from "./pages/students/SingleStudents";
 import EditStudents from "./pages/students/EditStudents";
+import PageNotFound from "./pages/404";
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
       <Route path="/student/:studentId" element={<SingleStudent />} />
       <Route path="/student/:studentId/edit" element={<EditStudents />} />
 
-      <Route path="*" element={<>404</>} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };
