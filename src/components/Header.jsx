@@ -1,7 +1,8 @@
 import { IoIosSchool } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const Header = () => {
+  const location = useLocation();
   const navMenu = [
     { name: "Home", path: "/" },
     { name: "All campuses", path: "/campuses" },
@@ -17,7 +18,14 @@ const Header = () => {
         <div className="flex gap-4 items-center">
           {navMenu.map((item) => {
             return (
-              <Link to={item.path} className="hover:text-primary">
+              <Link
+                to={item.path}
+                className={`hover:text-primary ${
+                  location.pathname === item.path
+                    ? "text-primary font-bold"
+                    : ""
+                }`}
+              >
                 {item.name}
               </Link>
             );
