@@ -15,10 +15,12 @@ const App = () => {
         <Route path="/campuses" element={<AllCampuses />} />
         <Route path="/campus/:campusId" element={<SingleCampus />} />
         <Route path="/campus/add" element={<EditCampus />} />
+        <Route path="/add-campus" element={<EditCampus />} />
         <Route path="/campus/:campusId/edit" element={<EditCampus />} />
 
         <Route path="/students" element={<AllStudents />} />
         <Route path="/student/add" element={<AllStudents />} />
+        <Route path="/student/add-student" element={<AllStudents />} />
         <Route path="/student/:studentId" element={<SingleStudent />} />
         <Route path="/student/:studentId/edit" element={<EditStudents />} />
       </Route>
