@@ -111,7 +111,7 @@ export const FormSelect = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        className={`w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-colors ${
+        className={`w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-colors bg-text  ${
           error && touched
             ? "border-red-500 focus:ring-red-200"
             : "border-gray-300 focus:ring-primary focus:border-primary"
