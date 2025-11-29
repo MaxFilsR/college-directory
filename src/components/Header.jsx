@@ -11,10 +11,12 @@ const Header = () => {
   return (
     <div className="w-full bg-background p-4 flex justify-center border-b border-primary">
       <div className="max-w-[1400px] w-full flex justify-between text-text">
-        <div className="text-primary text-3xl flex gap-1 items-center">
-          <IoIosSchool size={40} />
-          <h1>Campus Directory</h1>
-        </div>
+        <Link to={"/"}>
+          <div className="text-primary text-3xl flex gap-1 items-center">
+            <IoIosSchool size={40} />
+            <h1>Campus Directory</h1>
+          </div>
+        </Link>
         <div className="flex gap-4 items-center">
           {navMenu.map((item) => {
             return (
