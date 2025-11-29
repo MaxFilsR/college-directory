@@ -1,0 +1,98 @@
+{
+  "campuses": [
+    {
+      "id": "1",
+      "name": "Northwind University",
+      "address": "123 Maple Ave, Springfield",
+      "description": "A comprehensive university focused on research and community engagement.",
+      "imageUrl": "https://picsum.photos/600/400",
+      "createdAt": "2025-10-01T12:00:00.000Z",
+      "updatedAt": "2025-10-01T12:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Riverside College",
+      "address": "456 River Rd, Lakeside",
+      "description": "A small liberal arts college with strong undergraduate programs.",
+      "imageUrl": "https://picsum.photos/600/400",
+      "createdAt": "2025-10-02T09:30:00.000Z",
+      "updatedAt": "2025-10-02T09:30:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Mountain Tech",
+      "address": "789 Summit Blvd, Hilltown",
+      "description": "Specializes in engineering and applied sciences.",
+      "imageUrl": "https://picsum.photos/600/400",
+      "createdAt": "2025-10-03T08:15:00.000Z",
+      "updatedAt": "2025-10-03T08:15:00.000Z"
+    }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "email": "alice.johnson@example.edu",
+      "imageUrl": "https://picsum.photos/200/200",
+      "gpa": 3.8,
+      "campusId": "1",
+      "createdAt": "2025-10-05T10:00:00.000Z",
+      "updatedAt": "2025-10-05T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "firstName": "Bob",
+      "lastName": "Martin",
+      "email": "bob.martinez@example.edu",
+      "imageUrl": "https://picsum.photos/200/200",
+      "gpa": 3.2,
+      "campusId": "1",
+      "createdAt": "2025-10-06T11:20:00.000Z",
+      "updatedAt": "2025-11-29T01:19:40.246Z"
+    },
+    {
+      "id": "3",
+      "firstName": "Chloe",
+      "lastName": "Nguyen",
+      "email": "chloe.nguyen@example.edu",
+      "imageUrl": "https://picsum.photos/200/200",
+      "gpa": 3.6,
+      "campusId": "2",
+      "createdAt": "2025-10-07T14:45:00.000Z",
+      "updatedAt": "2025-11-29T01:15:46.082Z"
+    },
+    {
+      "firstName": "Daniel",
+      "lastName": "Kim",
+      "email": "daniel.kim@example.edu",
+      "imageUrl": "https://picsum.photos/200/200",
+      "gpa": 2.9,
+      "campusId": null,
+      "updatedAt": "2025-11-29T21:37:07.773Z",
+      "id": "4"
+    },
+    {
+      "id": "5",
+      "firstName": "Eva",
+      "lastName": "Gonzalez",
+      "email": "eva.gonzalez@example.edu",
+      "imageUrl": "https://picsum.photos/200/200",
+      "gpa": 4,
+      "campusId": "3",
+      "createdAt": "2025-10-09T16:25:00.000Z",
+      "updatedAt": "2025-10-09T16:25:00.000Z"
+    },
+    {
+      "id": "915f",
+      "firstName": "Ally",
+      "lastName": "Doe",
+      "email": "notreal@real.com",
+      "imageUrl": null,
+      "gpa": 2.3333,
+      "campusId": 1,
+      "createdAt": "2025-11-29T21:30:17.000Z",
+      "updatedAt": "2025-11-29T21:30:17.000Z"
+    }
+  ]
+}

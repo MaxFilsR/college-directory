@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router";
+import HomePage from "./pages/HomePage";
+import AllCampuses from "./pages/campuses/AllCampuses";
+import SingleCampus from "./pages/campuses/SingleCampus";
+import EditCampus from "./pages/campuses/EditCampus";
+import AllStudents from "./pages/students/AllStudents";
+import SingleStudent from "./pages/students/SingleStudents";
+import EditStudents from "./pages/students/EditStudents";
+import PageNotFound from "./pages/404";
+import AddCampus from "./pages/campuses/AddCampus";
+import AddStudent from "./pages/students/AddStudents";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Routes>
+      <Route path="/" element={<HomePage />}>
+        <Route path="/campuses" element={<AllCampuses />} />
+        <Route path="/campus/:campusId" element={<SingleCampus />} />
+        <Route path="/campuses/add" element={<AddCampus />} />
+        <Route path="/add-campus" element={<AddCampus />} />
+        <Route path="/campuses/:campusId/edit" element={<EditCampus />} />
 
-export default App
+        <Route path="/students" element={<AllStudents />} />
+        <Route path="/student/add" element={<AddStudent />} />
+        <Route path="/add-student" element={<AddStudent />} />
+        <Route path="/student/:studentId" element={<SingleStudent />} />
+        <Route path="/students/:studentId/edit" element={<EditStudents />} />
+      </Route>
+
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
+  );
+};
+
+export default App;

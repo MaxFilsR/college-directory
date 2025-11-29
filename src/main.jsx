@@ -1,8 +1,10 @@
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, useNavigate } from "react-router";
+import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App.jsx";
+import { store } from "./redux/store.js";
 const basename =
   import.meta.env.MODE === "production" ? "/college-directory" : "/";
 
@@ -25,7 +27,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter basename={basename}>
       <RedirectHandler>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </RedirectHandler>
     </BrowserRouter>
   </StrictMode>
