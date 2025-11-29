@@ -16,3 +16,9 @@
 ## Github Pages
 
 - [Grid Maker](https://maxfilsr.github.io/CSCI39548-asslignment-2/)
+
+## Instructions
+
+1. Run npm i in the project directory to install all important packages
+2. run npm run dev
+3. use the terminal to fid the local url for the client default is port 5173

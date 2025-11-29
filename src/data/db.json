@@ -1,13 +1,13 @@
 {
   "campuses": [
     {
-      "id": "49f8",
-      "name": "Test",
-      "address": "123 test",
-      "description": "Test",
+      "id": "6e4c",
+      "name": "New",
+      "address": "122321",
+      "description": "2",
       "imageUrl": "",
-      "createdAt": "2025-11-29T21:56:08.485Z",
-      "updatedAt": "2025-11-29T21:56:08.485Z"
+      "createdAt": "2025-11-29T22:02:45.140Z",
+      "updatedAt": "2025-11-29T22:02:45.140Z"
     }
   ],
   "students": [
