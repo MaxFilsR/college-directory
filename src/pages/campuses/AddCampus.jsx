@@ -1,12 +1,7 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router";
-import {
-  updateCampus,
-  fetchCampusById,
-  selectCurrentCampus,
-  selectCampusesLoading,
-} from "../../redux/campusSlice";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { addCampus } from "../../redux/campusSlice";
 import {
   FormInput,
   FormTextarea,
@@ -15,12 +10,9 @@ import {
   FormContainer,
 } from "../FormComponents";
 
-const EditCampus = () => {
-  const { campusId } = useParams();
+const AddCampus = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currentCampus = useSelector(selectCurrentCampus);
-  const loading = useSelector(selectCampusesLoading);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -32,21 +24,6 @@ const EditCampus = () => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    dispatch(fetchCampusById(campusId));
-  }, [dispatch, campusId]);
-
-  useEffect(() => {
-    if (currentCampus && currentCampus.id == campusId) {
-      setFormData({
-        name: currentCampus.name || "",
-        address: currentCampus.address || "",
-        description: currentCampus.description || "",
-        imageUrl: currentCampus.imageUrl || "",
-      });
-    }
-  }, [currentCampus, campusId]);
 
   const validateField = (name, value) => {
     switch (name) {
@@ -113,32 +90,16 @@ const EditCampus = () => {
     setIsSubmitting(true);
 
     try {
-      await dispatch(
-        updateCampus({
-          campusId: campusId,
-          campusData: formData,
-        })
-      ).unwrap();
-      navigate(`/campus/${campusId}`);
+      const result = await dispatch(addCampus(formData)).unwrap();
+      navigate(`/campus/${result.id}`);
     } catch (err) {
-      alert(`Failed to update campus: ${err}`);
+      alert(`Failed to create campus: ${err}`);
       setIsSubmitting(false);
     }
   };
 
-  if (loading && !currentCampus) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-2xl text-text">Loading campus data...</div>
-      </div>
-    );
-  }
-
   return (
-    <FormContainer
-      title="Edit Campus"
-      onBack={() => navigate(`/campus/${campusId}`)}
-    >
+    <FormContainer title="Add New Campus" onBack={() => navigate("/campuses")}>
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormInput
           label="Campus Name"
@@ -198,12 +159,12 @@ const EditCampus = () => {
             disabled={isSubmitting}
             className="flex-1"
           >
-            {isSubmitting ? "Updating..." : "Update Campus"}
+            {isSubmitting ? "Creating..." : "Create Campus"}
           </FormButton>
           <FormButton
             type="button"
             variant="secondary"
-            onClick={() => navigate(`/campus/${campusId}`)}
+            onClick={() => navigate("/campuses")}
           >
             Cancel
           </FormButton>
@@ -213,4 +174,4 @@ const EditCampus = () => {
   );
 };
 
-export default EditCampus;
+export default AddCampus;

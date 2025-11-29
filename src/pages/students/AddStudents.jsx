@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router";
-import {
-  updateStudent,
-  fetchStudentById,
-  selectCurrentStudent,
-  selectStudentsLoading,
-} from "../../redux/studentSlice";
+import { useNavigate, useSearchParams } from "react-router";
+import { addStudent } from "../../redux/studentSlice";
 import { fetchAllCampuses, selectAllCampuses } from "../../redux/campusSlice";
 import {
   FormInput,
@@ -16,13 +11,13 @@ import {
   FormContainer,
 } from "../FormComponents";
 
-const EditStudent = () => {
-  const { studentId } = useParams();
+const AddStudent = () => {
+  const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currentStudent = useSelector(selectCurrentStudent);
-  const loading = useSelector(selectStudentsLoading);
   const campuses = useSelector(selectAllCampuses);
+
+  const prefilledCampusId = searchParams.get("campusId");
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -30,7 +25,7 @@ const EditStudent = () => {
     email: "",
     imageUrl: "",
     gpa: "",
-    campusId: "",
+    campusId: prefilledCampusId || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -39,24 +34,7 @@ const EditStudent = () => {
 
   useEffect(() => {
     dispatch(fetchAllCampuses());
-    dispatch(fetchStudentById(studentId));
-  }, [dispatch, studentId]);
-
-  useEffect(() => {
-    if (currentStudent && currentStudent.id == studentId) {
-      setFormData({
-        firstName: currentStudent.firstName || "",
-        lastName: currentStudent.lastName || "",
-        email: currentStudent.email || "",
-        imageUrl: currentStudent.imageUrl || "",
-        gpa:
-          currentStudent.gpa !== null && currentStudent.gpa !== undefined
-            ? currentStudent.gpa.toString()
-            : "",
-        campusId: currentStudent.campusId || "",
-      });
-    }
-  }, [currentStudent, studentId]);
+  }, [dispatch]);
 
   const validateField = (name, value) => {
     switch (name) {
@@ -148,26 +126,17 @@ const EditStudent = () => {
     };
 
     try {
-      await dispatch(
-        updateStudent({
-          studentId: studentId,
-          studentData: submitData,
-        })
-      ).unwrap();
-      navigate(`/student/${studentId}`);
+      const result = await dispatch(addStudent(submitData)).unwrap();
+      if (prefilledCampusId) {
+        navigate(`/campus/${prefilledCampusId}`);
+      } else {
+        navigate(`/student/${result.id}`);
+      }
     } catch (err) {
-      alert(`Failed to update student: ${err}`);
+      alert(`Failed to create student: ${err}`);
       setIsSubmitting(false);
     }
   };
-
-  if (loading && !currentStudent) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-2xl text-text">Loading student data...</div>
-      </div>
-    );
-  }
 
   const campusOptions = campuses.map((campus) => ({
     value: campus.id,
@@ -176,8 +145,12 @@ const EditStudent = () => {
 
   return (
     <FormContainer
-      title="Edit Student"
-      onBack={() => navigate(`/student/${studentId}`)}
+      title="Add New Student"
+      onBack={() =>
+        navigate(
+          prefilledCampusId ? `/campus/${prefilledCampusId}` : "/students"
+        )
+      }
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormInput
@@ -263,12 +236,16 @@ const EditStudent = () => {
             disabled={isSubmitting}
             className="flex-1"
           >
-            {isSubmitting ? "Updating..." : "Update Student"}
+            {isSubmitting ? "Creating..." : "Create Student"}
           </FormButton>
           <FormButton
             type="button"
             variant="secondary"
-            onClick={() => navigate(`/student/${studentId}`)}
+            onClick={() =>
+              navigate(
+                prefilledCampusId ? `/campus/${prefilledCampusId}` : "/students"
+              )
+            }
           >
             Cancel
           </FormButton>
@@ -278,4 +255,4 @@ const EditStudent = () => {
   );
 };
 
-export default EditStudent;
+export default AddStudent;

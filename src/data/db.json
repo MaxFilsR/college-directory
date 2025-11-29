@@ -83,6 +83,17 @@
       "campusId": "3",
       "createdAt": "2025-10-09T16:25:00.000Z",
       "updatedAt": "2025-10-09T16:25:00.000Z"
+    },
+    {
+      "id": "915f",
+      "firstName": "Ally",
+      "lastName": "Doe",
+      "email": "notreal@real.com",
+      "imageUrl": null,
+      "gpa": 2.3333,
+      "campusId": 1,
+      "createdAt": "2025-11-29T21:30:17.000Z",
+      "updatedAt": "2025-11-29T21:30:17.000Z"
     }
   ]
 }

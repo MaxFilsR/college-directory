@@ -7,6 +7,8 @@ import AllStudents from "./pages/students/AllStudents";
 import SingleStudent from "./pages/students/SingleStudents";
 import EditStudents from "./pages/students/EditStudents";
 import PageNotFound from "./pages/404";
+import AddCampus from "./pages/campuses/AddCampus";
+import AddStudent from "./pages/students/AddStudents";
 
 const App = () => {
   return (
@@ -14,15 +16,15 @@ const App = () => {
       <Route path="/" element={<HomePage />}>
         <Route path="/campuses" element={<AllCampuses />} />
         <Route path="/campus/:campusId" element={<SingleCampus />} />
-        <Route path="/campus/add" element={<EditCampus />} />
-        <Route path="/add-campus" element={<EditCampus />} />
-        <Route path="/campus/:campusId/edit" element={<EditCampus />} />
+        <Route path="/campuses/add" element={<AddCampus />} />
+        <Route path="/add-campus" element={<AddCampus />} />
+        <Route path="/campuses/:campusId/edit" element={<EditCampus />} />
 
         <Route path="/students" element={<AllStudents />} />
-        <Route path="/student/add" element={<AllStudents />} />
-        <Route path="/student/add-student" element={<AllStudents />} />
+        <Route path="/student/add" element={<AddStudent />} />
+        <Route path="/add-student" element={<AddStudent />} />
         <Route path="/student/:studentId" element={<SingleStudent />} />
-        <Route path="/student/:studentId/edit" element={<EditStudents />} />
+        <Route path="/students/:studentId/edit" element={<EditStudents />} />
       </Route>
 
       <Route path="*" element={<PageNotFound />} />
