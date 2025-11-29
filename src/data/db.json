@@ -69,9 +69,9 @@
       "email": "daniel.kim@example.edu",
       "imageUrl": "https://picsum.photos/200/200",
       "gpa": 2.9,
-      "campusId": null,
+      "campusId": 2,
       "createdAt": "2025-10-08T09:10:00.000Z",
-      "updatedAt": "2025-11-29T02:08:04.315Z"
+      "updatedAt": "2025-11-29T21:00:30.651Z"
     },
     {
       "id": "5",

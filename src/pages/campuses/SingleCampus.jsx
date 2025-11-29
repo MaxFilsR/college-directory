@@ -168,7 +168,7 @@ const SingleCampus = () => {
           <div className="flex gap-3 mb-10 justify-end">
             <Link
               to={`/campuses/${campusId}/edit`}
-              className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-accent transition-colors font-semibold shadow-lg"
+              className="px-6 py-2 bg-primary text-background rounded-lg hover:bg-accent hover:text-text transition-colors font-semibold shadow-lg"
             >
               Edit Campus
             </Link>
@@ -199,13 +199,13 @@ const SingleCampus = () => {
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowAddStudent(!showAddStudent)}
-                  className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-semibold"
+                  className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-primary cursor-pointer transition-colors font-semibold"
                 >
                   Add Existing Student
                 </button>
                 <Link
                   to={`/students/add?campusId=${campusId}`}
-                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+                  className="px-4 py-2 bg-primary text-background rounded-lg hover:bg-accent hover:text-text transition-colors font-semibold"
                 >
                   Create New Student
                 </Link>
@@ -214,15 +214,15 @@ const SingleCampus = () => {
 
             {/* Add Student Dropdown */}
             {showAddStudent && (
-              <div className="mb-6 p-4 bg-gray-50 rounded-lg border-2 border-green-200">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <div className="mb-6 p-4 bg-primary/30 rounded-lg border-2 border-primary">
+                <label className="block text-sm font-semibold text-text mb-2">
                   Select Student to Enroll:
                 </label>
                 <div className="flex gap-3">
                   <select
                     value={selectedStudentId}
                     onChange={(e) => setSelectedStudentId(e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="flex-1 px-4 py-2 border bg-text border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     <option value="">Choose a student...</option>
                     {unenrolledStudents.map((student) => (
@@ -234,13 +234,13 @@ const SingleCampus = () => {
                   <button
                     onClick={handleAddExistingStudent}
                     disabled={!selectedStudentId}
-                    className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed"
+                    className="px-6 py-2 bg-green-500 text-white rounded-lg cursor-pointer hover:bg-primary transition-colors font-semibold disabled:bg-background/50 disabled:cursor-not-allowed"
                   >
                     Enroll
                   </button>
                   <button
                     onClick={() => setShowAddStudent(false)}
-                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors"
+                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -262,7 +262,7 @@ const SingleCampus = () => {
                 {enrolledStudents.map((student) => (
                   <div
                     key={student.id}
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-gray-50"
+                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all ease bg-background hover:bg-primary group"
                   >
                     <div className="flex items-center gap-3 mb-3">
                       <img
@@ -280,12 +280,12 @@ const SingleCampus = () => {
                       <div className="flex-1">
                         <Link
                           to={`/student/${student.id}`}
-                          className="text-lg font-semibold text-background shover:underline"
+                          className="text-lg font-semibold text-text group-hover:text-background shover:underline"
                         >
                           {student.firstName} {student.lastName}
                         </Link>
                         {student.gpa !== null && student.gpa !== undefined && (
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-primary/30 group-hover:text-accent">
                             GPA: {Number(student.gpa).toFixed(2)}
                           </p>
                         )}
@@ -293,7 +293,7 @@ const SingleCampus = () => {
                     </div>
                     <button
                       onClick={() => handleRemoveStudent(student.id)}
-                      className="w-full px-3 py-1 text-sm bg-red-100 text-red-600 rounded hover:bg-red-200 transition-colors cursor-pointer"
+                      className="w-full px-3 py-1 text-sm bg-red-100 text-red-600 rounded hover:bg-red-500 hover:text-text transition-colors cursor-pointer"
                     >
                       Remove from Campus
                     </button>
