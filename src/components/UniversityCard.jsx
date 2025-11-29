@@ -7,7 +7,7 @@ const UniversityCard = ({ id, name, image, onDelete }) => {
     onDelete(id);
   };
 
-  const defaultImage = "https://via.placeholder.com/600x400?text=No+Image";
+  const defaultImage = "https://picsum.photos/600/400";
   const displayImage = image || defaultImage;
 
   return (

@@ -43,13 +43,13 @@
     {
       "id": "2",
       "firstName": "Bob",
-      "lastName": "Martinez",
+      "lastName": "Martin",
       "email": "bob.martinez@example.edu",
       "imageUrl": "https://picsum.photos/200/200",
       "gpa": 3.2,
       "campusId": "1",
       "createdAt": "2025-10-06T11:20:00.000Z",
-      "updatedAt": "2025-10-06T11:20:00.000Z"
+      "updatedAt": "2025-11-29T01:19:40.246Z"
     },
     {
       "id": "3",
@@ -60,7 +60,7 @@
       "gpa": 3.6,
       "campusId": "2",
       "createdAt": "2025-10-07T14:45:00.000Z",
-      "updatedAt": "2025-10-07T14:45:00.000Z"
+      "updatedAt": "2025-11-29T01:15:46.082Z"
     },
     {
       "id": "4",
@@ -71,7 +71,7 @@
       "gpa": 2.9,
       "campusId": null,
       "createdAt": "2025-10-08T09:10:00.000Z",
-      "updatedAt": "2025-10-08T09:10:00.000Z"
+      "updatedAt": "2025-11-29T02:08:04.315Z"
     },
     {
       "id": "5",
@@ -79,7 +79,7 @@
       "lastName": "Gonzalez",
       "email": "eva.gonzalez@example.edu",
       "imageUrl": "https://picsum.photos/200/200",
-      "gpa": 4.0,
+      "gpa": 4,
       "campusId": "3",
       "createdAt": "2025-10-09T16:25:00.000Z",
       "updatedAt": "2025-10-09T16:25:00.000Z"

@@ -7,7 +7,7 @@ const StudentCard = ({ id, firstName, lastName, imageUrl, gpa, onDelete }) => {
     onDelete(id);
   };
 
-  const defaultImage = "https://via.placeholder.com/200x200?text=No+Photo";
+  const defaultImage = "https://picsum.photos/600/400";
   const displayImage = imageUrl || defaultImage;
   const fullName = `${firstName} ${lastName}`;
 
