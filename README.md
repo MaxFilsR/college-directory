@@ -11,10 +11,6 @@
 - **An Van**  
   GitHub: [realpyop An Van]([https://github.com/realpyop)
 
-## Github Pages
-
-- [Grid Maker](https://maxfilsr.github.io/CSCI39548-asslignment-2/)
-
 ## Instructions
 
 1. Run npm i in the project directory to install all important packages
